@@ -3,9 +3,13 @@ pipeline {
 
     stages {
         stage('Build') {
+            environment {
+                S3_BUCKET = 's3'
+            }
             steps {
-                sh 'aws --version'
-                sh 'aws s3 ls'
+                withAWS(credentials: 'jenkins-aws-credentials-productions', region: 'ap-southest-1') {
+                    sh 'aws s3 ls'
+                }
             }
         }
         stage('Deploy') {
