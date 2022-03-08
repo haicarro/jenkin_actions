@@ -7,7 +7,8 @@ pipeline {
                 S3_BUCKET = 's3'
             }
             steps {
-                sh 'python --version'
+                sh 'ls'
+                sh 'python3.8 test.py'
                 sh 'docker --version'
             }
         }
