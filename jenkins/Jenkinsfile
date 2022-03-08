@@ -7,9 +7,7 @@ pipeline {
                 S3_BUCKET = 's3'
             }
             steps {
-                withAWS(credentials: 'jenkins-aws-credentials-productions', region: 'ap-southest-1') {
-                    sh 'aws s3 ls'
-                }
+                sh 'python --version'
             }
         }
         stage('Deploy') {
