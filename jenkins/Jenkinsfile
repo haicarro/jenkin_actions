@@ -9,6 +9,8 @@ pipeline {
             steps {
                 sh 'aws --version'
                 sh 'aws s3 ls'
+                sh 'cd container'
+                sh 'ls'
             }
         }
         stage('Deploy') {
