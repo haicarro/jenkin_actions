@@ -2,14 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            agent none
-            steps {
-                sh "ls -l devops"
-                sh "docker ps"
-            }
-        }
-        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
