@@ -9,7 +9,7 @@ pipeline {
                     sh "python --version"
                     sh "pip --version"
                     withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
-                        sh "aws s3 ls"
+                        sh "sh container/build_and_push.sh"
                     }
                 }
             }
