@@ -7,8 +7,9 @@ pipeline {
                 echo 'Deploying....'
                 withPythonEnv('/home/ec2-user/venv/venv38/') {
                     sh "python --version"
+                    sh "pip --version"
                     withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
-                        sh "python devops/deploy.py"
+                        sh "aws s3 ls"
                     }
                 }
             }
