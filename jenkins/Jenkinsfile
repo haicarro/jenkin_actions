@@ -1,9 +1,19 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent any
+
     stages {
-        stage('build') {
+        stage('Build') {
+            environment {
+                S3_BUCKET = 's3'
+            }
             steps {
-                sh 'docker --version'
+                sh 'ls'
+                sh 'python --version'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
