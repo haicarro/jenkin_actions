@@ -9,9 +9,9 @@ pipeline {
                     sh "python --version"
                     withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
                         sh "sh container/build_and_push.sh"
-                        #sh 'curl "https://zenodo.org/record/3987831/files/Cnn14_DecisionLevelMax_mAP%3D0.385.pth?download=1" -o cnn14max.pth'
-                        #sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
-                        #sh 'mv cnn14max.pth code/'
+                        //sh 'curl "https://zenodo.org/record/3987831/files/Cnn14_DecisionLevelMax_mAP%3D0.385.pth?download=1" -o cnn14max.pth'
+                        //sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
+                        //sh 'mv cnn14max.pth code/'
                         sh 'pip install numpy'
                         sh 'python code/test_inference.py'
                     }
