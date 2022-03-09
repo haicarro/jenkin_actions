@@ -12,10 +12,10 @@ pipeline {
                         //sh 'curl "https://zenodo.org/record/3987831/files/Cnn14_DecisionLevelMax_mAP%3D0.385.pth?download=1" -o cnn14max.pth'
                         //sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
                         //sh 'mv cnn14max.pth code/'
+                        sh 'apt install liblzma-dev'
                         sh 'pip install numpy'
                         sh 'pip install sagemaker'
                         sh 'pip install torchlibrosa==0.0.9'
-                        sh 'pip install backports.lzma'
                         sh 'pip install container/wheel/pann-0.1.0-py3-none-any.whl'
                         sh 'python code/test_inference.py'
                     }
