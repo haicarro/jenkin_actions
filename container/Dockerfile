@@ -19,7 +19,7 @@ ARG REGION=ap-southeast-1
 # SageMaker PyTorch image
 FROM 763104351884.dkr.ecr.$REGION.amazonaws.com/pytorch-inference:1.10.0-cpu-py38-ubuntu20.04-sagemaker
 
-COPY container/wheel/pann-0.1.0-py3-none-any.whl /opt/ml
+COPY wheel/pann-0.1.0-py3-none-any.whl /opt/ml
 RUN pip install /opt/ml/pann-0.1.0-py3-none-any.whl
 RUN apt-get update && apt-get install -y libsndfile-dev
 RUN pip install sagemaker

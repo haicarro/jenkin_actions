@@ -8,7 +8,7 @@ pipeline {
             }
             steps {
                 sh 'aws --version'
-                sh 'aws s3 ls'
+                sh 'ls'
                 sh 'sh container/build_and_push.sh'
             }
         }
