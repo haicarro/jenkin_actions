@@ -3,19 +3,24 @@ pipeline {
 
     stages {
         stage('Build') {
-            environment {
-                S3_BUCKET = 's3'
-            }
+            agent none
             steps {
-                sh 'aws --version'
-                sh 'ls'
-                sh 'sh container/build_and_push.sh'
+                sh "ls -l devops"
+                sh "docker ps"
             }
         }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                withPythonEnv('/home/ec2-user/venv/venv38/') {
+                    sh "python --version"
+                    withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
+                        sh "python devops/deploy.py"
+                    }
+                }
             }
         }
+
     }
 }
