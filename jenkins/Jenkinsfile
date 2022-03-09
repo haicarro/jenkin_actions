@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Deploy') {
+        stage('Build Image') {
             steps {
-                echo 'Deploying....'
+                echo 'Building Image....'
                 withPythonEnv('/home/ec2-user/venv/venv38/') {
                     sh "python --version"
                     withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
