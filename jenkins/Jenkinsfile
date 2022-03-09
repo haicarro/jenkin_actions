@@ -13,6 +13,7 @@ pipeline {
                         //sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
                         //sh 'mv cnn14max.pth code/'
                         sh 'pip install numpy'
+                        sh 'pip install sagemaker'
                         sh 'python code/test_inference.py'
                     }
                 }
