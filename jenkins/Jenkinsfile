@@ -15,6 +15,7 @@ pipeline {
                         sh 'pip install numpy'
                         sh 'pip install sagemaker'
                         sh 'pip install torchlibrosa==0.0.9'
+                        sh 'pip install backports.lzma'
                         sh 'pip install container/wheel/pann-0.1.0-py3-none-any.whl'
                         sh 'python code/test_inference.py'
                     }
