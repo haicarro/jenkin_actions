@@ -14,6 +14,7 @@ pipeline {
                         //sh 'mv cnn14max.pth code/'
                         sh 'pip install numpy'
                         sh 'pip install sagemaker'
+                        sh 'pip install container/wheel/pann-0.1.0-py3-none-any.whl'
                         sh 'python code/test_inference.py'
                     }
                 }
