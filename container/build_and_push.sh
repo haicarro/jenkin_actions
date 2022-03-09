@@ -30,7 +30,7 @@ aws ecr get-login-password --region $region | docker login --username AWS --pass
 
 # Build the docker image locally with the image name and then push it to ECR
 # with the full name.
-docker build  -t ${image} . --build-arg REGION=${region}
+docker build  -t ${image} -f Dockerfile --build-arg REGION=${region}
 
 # the following is for ECR of carro
 # 302145289873.dkr.ecr.ap-southeast-1.amazonaws.com/sound-event-detection:v1

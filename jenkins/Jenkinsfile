@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'aws --version'
                 sh 'aws s3 ls'
-                sh 'cd container && ls'
+                sh 'sh container/build_and_push.sh'
             }
         }
         stage('Deploy') {
