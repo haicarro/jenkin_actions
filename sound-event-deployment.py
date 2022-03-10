@@ -15,6 +15,7 @@ sess = Session()
 role = 'arn:aws:iam::302145289873:role/service-role/AmazonSageMaker-ExecutionRole-20211223T112159'
 
 # upload the trained pytorch model to S3
+print('Uploading data to S3 ....')
 cnn14max_model_data = sess.upload_data(
     path="cnn14max.tar.gz", bucket=sess.default_bucket(), key_prefix="sound-event-model/pytorch"
 )
@@ -37,6 +38,7 @@ if local_mode:
     instance_type = "local"
 else:
     instance_type = "ml.c4.xlarge"
+print('deploy the model on: {}'.format(instance_type))
 predictor = model.deploy(
     initial_instance_count =  1,
     instance_type =instance_type,
@@ -45,7 +47,8 @@ predictor = model.deploy(
 )
 
 # TESTING
+print('Running test case ....')
 rng = np.random.default_rng()
 audio = 2 * rng.random(size=44100, dtype=np.float32) - 1
 data_dict = {"inputs" : audio.tolist()}
-predictor.predict(data_dict)
+print(predictor.predict(data_dict))
