@@ -27,7 +27,7 @@ model = PyTorchModel(
     model_data = cnn14max_model_data,
     framework_version = "1.9.0",
     py_version = "py38",
-    image_uri = '302145289873.dkr.ecr.ap-southeast-1.amazonaws.com/sound-event-detection:v2'
+    image_uri = '302145289873.dkr.ecr.ap-southeast-1.amazonaws.com/sound-event-detection:v1'
 )
 
 # set local_mode to False if you want to deploy on a remote
