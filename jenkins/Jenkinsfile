@@ -9,14 +9,12 @@ pipeline {
                     sh "python --version"
                     withAWS(credentials:'jenkins-aws-credentials-productions', region: 'ap-southeast-1') {
                         sh "sh container/build_and_push.sh"
-                        //sh 'curl "https://zenodo.org/record/3987831/files/Cnn14_DecisionLevelMax_mAP%3D0.385.pth?download=1" -o cnn14max.pth'
-                        //sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
-                        //sh 'mv cnn14max.pth code/'
+                        sh 'curl "https://zenodo.org/record/3987831/files/Cnn14_DecisionLevelMax_mAP%3D0.385.pth?download=1" -o cnn14max.pth'
+                        sh 'tar -cvzf cnn14max.tar.gz cnn14max.pth'
                         sh 'pip install numpy'
                         sh 'pip install sagemaker'
-                        sh 'pip install torchvision==0.7.0'
-                        sh 'pip install container/wheel/pann-0.1.0-py3-none-any.whl'
-                        //sh 'python code/test_inference.py'
+                        sh 'pip install boto3'
+                        sh 'python sound-event-deployment.py'
                     }
                 }
             }
