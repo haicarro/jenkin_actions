@@ -16,7 +16,7 @@ pipeline {
                         sh 'pip install sagemaker'
                         sh 'pip install torchvision==0.7.0'
                         sh 'pip install container/wheel/pann-0.1.0-py3-none-any.whl'
-                        sh 'python code/test_inference.py'
+                        //sh 'python code/test_inference.py'
                     }
                 }
             }
